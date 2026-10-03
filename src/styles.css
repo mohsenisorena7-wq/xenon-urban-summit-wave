@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f3efe8;
+  --color-surface: #faf7f2;
+  --color-surface-2: #eee8dc;
+  --color-fg: #1a1814;
+  --color-muted: #6e675c;
+  --color-primary: #2f4a42;
+  --color-primary-foreground: #f4efe6;
+  --color-border: #ddd4c4;
+  --color-ring: #2f4a42;
+  --color-danger: #8a3b32;
+
+  --font-sans: "Vazirmatn", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Newsreader", "Vazirmatn", serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --motion-quick: 150ms;
+  --motion-fast: 250ms;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

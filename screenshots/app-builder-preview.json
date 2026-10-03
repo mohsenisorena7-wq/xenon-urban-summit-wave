@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "آتلیه — استودیو محتوای معماری",
+      "hasCanvas": false,
+      "bodyTextLen": 1286,
+      "bodyTextHash": "c3f6606647d64d7502c33335936931406301dc047da83cb47a30f2ae9f4ddb0a",
+      "bodyTextPrefix": "آتلیه استودیو محتوای معماری استودیو بایگانی (0) تنظیمات پروژه سب",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "آتلیه — استودیو محتوای معماری",
+      "hasCanvas": false,
+      "bodyTextLen": 1286,
+      "bodyTextHash": "c3f6606647d64d7502c33335936931406301dc047da83cb47a30f2ae9f4ddb0a",
+      "bodyTextPrefix": "آتلیه استودیو محتوای معماری استودیو بایگانی (0) تنظیمات پروژه سب",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
