@@ -79,19 +79,26 @@ function Home() {
     setError("");
     setCopied(false);
     try {
-      const result = await generateArchitectureContent({
-        data: {
-          type,
-          style,
-          project,
-          notes,
-          location,
-          materials,
-          photos: photos.map((p) => p.dataUrl),
-          viewType: type === "image" ? viewType : undefined,
-          monthName: type === "calendar" ? monthName : undefined,
-        },
-      });
+      const payload = {
+        type,
+        style,
+        project,
+        notes,
+        location,
+        materials,
+        photoCount: photos.length,
+        photos: photos.map((p) => p.dataUrl),
+        viewType: type === "image" ? viewType : undefined,
+        monthName: type === "calendar" ? monthName : undefined,
+      };
+      let result;
+      try {
+        result = await generateArchitectureContent({ data: payload });
+      } catch {
+        result = await generateArchitectureContent({
+          data: { ...payload, photos: [] },
+        });
+      }
       if (!result.ok) {
         setError("تولید محتوا انجام نشد. دوباره تلاش کنید.");
         return;
@@ -394,6 +401,19 @@ function Home() {
                 <p className="mt-4 rounded-md border border-danger/30 bg-danger/8 px-3 py-2 text-sm text-danger">
                   {error}
                 </p>
+              ) : null}
+
+              {photos.length > 0 ? (
+                <div className="mt-4 flex gap-2">
+                  {photos.map((photo) => (
+                    <img
+                      key={photo.id}
+                      src={photo.dataUrl}
+                      alt=""
+                      className="h-16 w-16 rounded-md border border-border object-cover"
+                    />
+                  ))}
+                </div>
               ) : null}
 
               {busy && !text ? (

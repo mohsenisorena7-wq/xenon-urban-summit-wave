@@ -1,7 +1,7 @@
 export type ProjectPhoto = { id: string; dataUrl: string };
 
 const MAX_PHOTOS = 3;
-const MAX_EDGE = 720;
+const MAX_EDGE = 480;
 
 export function remainingPhotoSlots(count: number) {
   return Math.max(0, MAX_PHOTOS - count);
@@ -39,7 +39,7 @@ function compressImage(file: File): Promise<string> {
         return;
       }
       ctx.drawImage(img, 0, 0, w, h);
-      resolve(canvas.toDataURL("image/jpeg", 0.72));
+      resolve(canvas.toDataURL("image/jpeg", 0.62));
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);

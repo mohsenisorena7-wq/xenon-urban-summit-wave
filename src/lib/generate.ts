@@ -11,6 +11,7 @@ const InputSchema = z.object({
   monthName: z.string().optional(),
   materials: z.string().max(160).optional(),
   location: z.string().max(120).optional(),
+  photoCount: z.number().int().min(0).max(3).optional(),
   photos: z.array(z.string().startsWith("data:image/")).max(3).optional(),
 });
 
@@ -28,7 +29,7 @@ function contextBlock(data: GenerateInput): string {
     data.location?.trim() ? `موقعیت / اقلیم: ${data.location.trim()}` : "",
     data.materials?.trim() ? `متریال: ${data.materials.trim()}` : "",
     data.notes?.trim() ? `نکات کارفرما:\n${data.notes.trim()}` : "",
-    data.photos?.length ? `تعداد عکس مرجع: ${data.photos.length}` : "",
+    data.photos?.length ? `تعداد عکس مرجع: ${data.photos.length}` : data.photoCount ? `تعداد عکس مرجع: ${data.photoCount}` : "",
   ]
     .filter(Boolean)
     .join("\n");
@@ -171,7 +172,7 @@ export const generateArchitectureContent = createServerFn({ method: "POST" })
       ok: true,
       text: localContent({
         ...data,
-        photoCount: data.photos?.length ?? 0,
+        photoCount: data.photos?.length || data.photoCount || 0,
       }),
       source: "studio",
     };
